@@ -1,5 +1,7 @@
 # Bigchx Make
 
+[English](README.md)
+
 Bigchx Make 是一个把图片整理为干净、可打印多色图稿的 Agent Skill。它整合原图主色分析、有限色分层、助手辅助漫画矢量重绘、拓竹官方耗材匹配，以及按打印机生成 3MF 工程。
 
 本仓库包含可安装的 `bigchx-make` 技能包。仓库暂时由 `bigchx` GitHub 组织私有维护；公开网页和发布下载通道单独管理。
