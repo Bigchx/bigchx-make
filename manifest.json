@@ -1,0 +1,280 @@
+{
+  "schemaVersion": 1,
+  "name": "bigchx-make",
+  "displayName": "Bigchx Make",
+  "version": "2.1.2",
+  "releasedAt": "2026-09-09",
+  "website": "https://skills.bigchx.com/",
+  "author": "bigchx",
+  "entrypoint": "/skills/SKILL.md",
+  "download": "https://oss.3dp.ing/skills/bigchx-make-skill.zip",
+  "update": {
+    "manifestUrl": "https://skills.bigchx.com/skills/manifest.json",
+    "strategy": "whole-package",
+    "checkIntervalHours": 24,
+    "timeoutMs": 2500,
+    "offlineContinue": true,
+    "automaticInstall": false
+  },
+  "runtime": {
+    "node": ">=22.12.0",
+    "projectStateSchema": 1
+  },
+  "modules": {
+    "core": {
+      "title": "运行与版本检查",
+      "version": "2.0.1",
+      "problem": "技能来源和版本分散，不知道是否需要更新。",
+      "summary": "统一模块清单，使用前检查版本；每天缓存，离线继续，发现新版提醒下载整包。",
+      "guide": "references/updates.md",
+      "prompt": "使用 $bigchx-make，检查本地技能和各模块版本，告诉我是否需要更新。",
+      "command": "node scripts/check-update.mjs --force",
+      "outputs": [
+        "版本状态",
+        "模块差异",
+        "更新入口"
+      ],
+      "status": "available",
+      "examples": [
+        {
+          "title": "检查技能更新",
+          "input": "本地技能版本",
+          "output": "当前版本、更新模块与下载入口",
+          "prompt": "使用 $bigchx-make，检查当前版本，有更新就告诉我这次改了什么。"
+        }
+      ]
+    },
+    "color-analysis": {
+      "title": "主色分析",
+      "version": "1.0.0",
+      "problem": "图片有大量相近颜色，肉眼难以判断主色和占比。",
+      "summary": "统计完整原图，将细微色差归成主色组，给出 HEX、像素数和占整图比例。",
+      "guide": "references/color-workflow.md",
+      "prompt": "使用 $bigchx-make，分析这张图的主要颜色和面积占比，列出配色建议。",
+      "command": "node scripts/run.mjs analyze --input photo.png --out job/colors.json",
+      "outputs": [
+        "颜色报告",
+        "HEX 色值",
+        "主色占比"
+      ],
+      "status": "available",
+      "examples": [
+        {
+          "title": "看原图主色和占比",
+          "input": "JPG / PNG / WEBP 图片",
+          "output": "主色 HEX、像素数、整图占比及官方耗材推荐",
+          "prompt": "使用 $bigchx-make，分析这张图各主色占比，列出每种颜色最接近的拓竹耗材、材料系列和官方色号。"
+        }
+      ]
+    },
+    "separation": {
+      "title": "有限色分层",
+      "version": "1.0.0",
+      "problem": "颗粒和杂色太多，直接转模型容易出现碎片与细线。",
+      "summary": "2–36 色分层，可锁定颜色；按细节、打印轮廓或像素风选择算法，保留透明区域。",
+      "guide": "references/color-workflow.md",
+      "prompt": "使用 $bigchx-make，把图片分成 4 色，保留主要形状和透明背景，先给我看各层和合并预览。",
+      "command": "node scripts/run.mjs separate --input photo.png --config config.json --out job/separated",
+      "outputs": [
+        "分层 PNG",
+        "合并预览",
+        "可继续编辑的状态"
+      ],
+      "status": "available",
+      "examples": [
+        {
+          "title": "锁定颜色，分成独立图层",
+          "input": "原图与指定颜色 / HEX",
+          "output": "合并预览、透明单层 PNG",
+          "prompt": "使用 $bigchx-make，锁住图中的黑、白和两种粉色，做成 4 色方案，分别给我看每一层。"
+        },
+        {
+          "title": "颗粒清理与图像调整",
+          "input": "颗粒明显、明暗不清的原图",
+          "output": "调整后的分色参考图",
+          "prompt": "使用 $bigchx-make，适当调整对比度并去掉碎色颗粒，保留五官，先比较清理前后的分色。"
+        },
+        {
+          "title": "细节、打印轮廓或像素画",
+          "input": "图片与期望风格 / 打印尺寸",
+          "output": "detail / printable / mosaic 对应预览",
+          "prompt": "使用 $bigchx-make，把这张图做成像素画风格的 4 色分层，准备按 0.4 mm 喷嘴打印，最长边 100 mm。"
+        },
+        {
+          "title": "去背景并保留内部白色",
+          "input": "背景与主体边界明确的图片",
+          "output": "透明主体与保留眼白/衣服的分层图",
+          "prompt": "使用 $bigchx-make，去掉这张图外面的白底，保留人物眼白和白色衣服，给我透明 PNG。"
+        }
+      ]
+    },
+    "vector-redraw": {
+      "title": "漫画矢量重绘",
+      "version": "1.0.0",
+      "problem": "自动描摹把毛边和噪点也变成路径，图案不够干净。",
+      "summary": "由 AI 助手理解主体、重画贝塞尔曲线，统一粗描边和有限纯色，输出可编辑 SVG。",
+      "guide": "references/vector-redraw.md",
+      "prompt": "使用 $bigchx-make，先分色，再重绘成漫画粗描边、大色块的风格。保留主体表情，输出透明 SVG 和 PNG 预览。",
+      "command": "node scripts/render-svg.mjs --input job/artwork.svg --out job/vector --size 1600",
+      "outputs": [
+        "可编辑 SVG",
+        "透明 PNG",
+        "打印输入图"
+      ],
+      "status": "available",
+      "examples": [
+        {
+          "title": "漫画矢量重绘与分色",
+          "input": "角色图、插画或图案",
+          "output": "平滑曲线、统一粗描边、有限色 SVG",
+          "prompt": "使用 $bigchx-make，先分色，再把图重绘成类似 Logo 的干净漫画风格，保留表情，给我 SVG 和预览。"
+        },
+        {
+          "title": "透明图与对比预览",
+          "input": "已完成的 SVG 图稿",
+          "output": "透明 PNG、白底查看图、主体裁剪图",
+          "prompt": "使用 $bigchx-make，把重绘 SVG 输出为透明 PNG，排一张原图、技能分色和重绘稿的对比图。"
+        }
+      ]
+    },
+    "filament": {
+      "title": "拓竹耗材匹配",
+      "version": "1.0.0",
+      "problem": "屏幕色值和实物耗材之间缺少对应关系。",
+      "summary": "使用官方色卡快照匹配材料系列、颜色名称与色号，按真实组件换色并返回预览。",
+      "guide": "references/color-workflow.md",
+      "prompt": "使用 $bigchx-make，为当前分色图匹配拓竹官方 PLA 耗材，保留黑色描边和双粉的区别，给我换色预览。",
+      "command": "node scripts/run.mjs recolor --state job/separated/project.json.gz --assignments assignments.json --out job/recolored",
+      "outputs": [
+        "官方色号",
+        "材料分配",
+        "耗材配色预览"
+      ],
+      "status": "available",
+      "examples": [
+        {
+          "title": "图片颜色对应拓竹耗材",
+          "input": "原图或已确定的颜色",
+          "output": "材料系列、颜色名称、官方色号 / HEX",
+          "prompt": "使用 $bigchx-make，把这张图的浅粉、深粉和青绿分别匹配拓竹 PLA，保留双粉区别。"
+        },
+        {
+          "title": "按官方耗材重新配色",
+          "input": "已分层的项目与材料选择",
+          "output": "换色 PNG、完整材料身份分配",
+          "prompt": "使用 $bigchx-make，把当前图层换成接近的拓竹 Basic / Matte，使用真实耗材色值，先给我看效果。"
+        }
+      ]
+    },
+    "print-export": {
+      "title": "多色打印工程",
+      "version": "2.1.0",
+      "problem": "模型尺寸、图层对齐、喷嘴和材料配置需要反复手动整理。",
+      "summary": "按实际 mm 尺寸生成多部件 3MF，携带机型、喷嘴与材料预设，保持色块对齐。",
+      "guide": "references/printing.md",
+      "prompt": "使用 $bigchx-make，把当前图稿做成 A1、0.4 mm 喷嘴、最长边 150 mm、厚 2 mm 的平放标牌，匹配耗材并交付 3MF。",
+      "command": "node scripts/run.mjs export --state job/recolored/project.json.gz --printer A1 --out job/model",
+      "outputs": [
+        "多色 3MF",
+        "STL / 轮廓 SVG",
+        "打印参数"
+      ],
+      "status": "available",
+      "examples": [
+        {
+          "title": "A1 多色平面标牌",
+          "input": "确认后的图稿、尺寸和厚度",
+          "output": "带机型和材料配置的多部件 3MF",
+          "prompt": "使用 $bigchx-make，去掉背景，按 A1、0.4 mm 喷嘴、最长边 150 mm、厚 2 mm 做平放标牌，匹配耗材后交付 3MF。"
+        },
+        {
+          "title": "保留七色方案",
+          "input": "七色图稿与实际设备",
+          "output": "七色工程及换料能力说明",
+          "prompt": "使用 $bigchx-make，保留全部 7 色，输出 A1 的 3MF，并说明是否需要手动换料，不自动减少颜色。"
+        },
+        {
+          "title": "导出和切片检查",
+          "input": "已生成的打印工程",
+          "output": "3MF、分层 STL、轮廓 SVG、PNG；可用时切片报告",
+          "prompt": "使用 $bigchx-make，检查模型尺寸、图层对齐和网格，能调用 Bambu Studio 的话再切片验证，不启动打印。"
+        }
+      ]
+    },
+    "raised-logo": {
+      "title": "凸起 Logo 与底板",
+      "version": "1.0.0",
+      "problem": "Logo 与底板同厚，无法表达指定高度差。",
+      "summary": "连续矩形底板与 Logo 分别设定起止高度；支持底板 2 mm、Logo 再增加一个切片层高。",
+      "guide": "references/raised-logo.md",
+      "prompt": "使用 $bigchx-make，把 Logo 放在 2 mm 的底板上，Logo 再抬高一个 0.2 mm 层高，总高 2.2 mm，输出 A1 0.4 mm 的 3MF。",
+      "command": "node scripts/raised-logo.mjs --state job/separated/project.json.gz --layers 2 --base-thickness 2 --raise-layers 1 --printer A1 --out job/raised",
+      "outputs": [
+        "连续底板",
+        "凸起 Logo 3MF",
+        "各部件高度参数"
+      ],
+      "status": "available",
+      "examples": [
+        {
+          "title": "底板 2 mm，Logo 抬高一层",
+          "input": "已分色的 Logo、尺寸与实际层高",
+          "output": "底板 Z=0–2 mm、Logo Z=2–2.2 mm 的多部件工程",
+          "prompt": "使用 $bigchx-make，给这个 Logo 加白色矩形底板，底板厚 2 mm，Logo 凸起 0.2 mm，保留颜色并切片检查。"
+        }
+      ]
+    }
+  },
+  "roadmap": [
+    {
+      "id": "relief",
+      "title": "浮雕与高度编辑",
+      "status": "planned",
+      "version": null
+    },
+    {
+      "id": "solid-model",
+      "title": "完整立体与 CAD 实体",
+      "status": "planned",
+      "version": null
+    },
+    {
+      "id": "engraving",
+      "title": "雕刻图形与加工刀路",
+      "status": "planned",
+      "version": null
+    },
+    {
+      "id": "uv",
+      "title": "UV 打印与模型纹理",
+      "status": "planned",
+      "version": null
+    }
+  ],
+  "docs": [
+    "SKILL.md",
+    "references/color-workflow.md",
+    "references/vector-redraw.md",
+    "references/local-cli.md",
+    "references/printing.md",
+    "references/browser.md",
+    "references/install.md",
+    "references/updates.md",
+    "references/releasing.md",
+    "NOTICE.md",
+    "references/raised-logo.md"
+  ],
+  "commands": [
+    "analyze",
+    "separate",
+    "recolor",
+    "export",
+    "catalog"
+  ],
+  "auxiliaryCommands": [
+    "scripts/render-svg.mjs",
+    "scripts/check-update.mjs",
+    "scripts/raised-logo.mjs"
+  ],
+  "remoteComputeApi": false
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Bigchx Make"
+  icon_small: "./assets/bigchx-icon-small.png"
+  icon_large: "./assets/bigchx-icon.png"
+  short_description: "主色分析、漫画矢量重绘与平涂分色、拓竹耗材匹配及 3MF 生成"
+  default_prompt: "使用 $bigchx-make 分析图片并按我的目标分色；需要漫画风时重绘为透明 SVG、返回 PNG 预览，打印时再匹配拓竹耗材并生成 3MF。"

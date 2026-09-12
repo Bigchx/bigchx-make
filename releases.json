@@ -1,0 +1,83 @@
+[
+  {
+    "version": "2.1.2",
+    "date": "2026-09-09",
+    "title": "技能白底品牌图标",
+    "changes": [
+      "采用用户指定的原始品牌图形，铺纯白底，提供 128 px 与 512 px 不透明 PNG 图标。",
+      "在 agents/openai.yaml 配置大小图标，随完整技能包提供，并同步公开图标资源。"
+    ],
+    "moduleVersions": {
+      "core": "2.0.1",
+      "color-analysis": "1.0.0",
+      "separation": "1.0.0",
+      "vector-redraw": "1.0.0",
+      "filament": "1.0.0",
+      "print-export": "2.1.0",
+      "raised-logo": "1.0.0"
+    }
+  },
+  {
+    "version": "2.1.1",
+    "date": "2026-09-08",
+    "title": "OSS 技能包与介绍型主页",
+    "changes": [
+      "技能安装、版本清单和更新提醒统一使用指定的 OSS 技能包地址。",
+      "移除中英文主页的技能包与示例下载按钮，保留安装说明和交互预览。",
+      "发布包改为生成在非公开目录，网站不再托管技能 ZIP 或旧下载重定向。"
+    ],
+    "moduleVersions": {
+      "core": "2.0.1",
+      "color-analysis": "1.0.0",
+      "separation": "1.0.0",
+      "vector-redraw": "1.0.0",
+      "filament": "1.0.0",
+      "print-export": "2.1.0",
+      "raised-logo": "1.0.0"
+    }
+  },
+  {
+    "version": "2.1.0",
+    "date": "2026-09-08",
+    "title": "凸起 Logo 与双语主页",
+    "changes": [
+      "新增连续底板与凸起 Logo：底板 2 mm，Logo 可再增加一个或多个切片层高。",
+      "3MF / STL 支持各部件独立的起止高度，并保留同一坐标。",
+      "主页默认英文，支持切换中文；采用 bigchx.com 品牌 Logo。",
+      "增加实际高度示例，保留漫画重绘和地球 1 px / 打印分色案例。"
+    ],
+    "moduleVersions": {
+      "core": "2.0.0",
+      "color-analysis": "1.0.0",
+      "separation": "1.0.0",
+      "vector-redraw": "1.0.0",
+      "filament": "1.0.0",
+      "print-export": "2.1.0",
+      "raised-logo": "1.0.0"
+    },
+    "migration": "更新完整技能包以使用 raised-logo。普通项目继续同厚导出，中间项目仍兼容 schema 1。"
+  },
+  {
+    "version": "2.0.0",
+    "date": "2026-09-08",
+    "title": "以 Bigchx Make 统一发布",
+    "changes": [
+      "统一技能名、调用名、页面品牌和导出文件名。",
+      "按六个现有模块整理能力、用法和独立版本号。",
+      "新增版本检查：每天缓存、只提醒更新、离线继续计算。",
+      "整理漫画矢量重绘流程，提供透明 SVG 渲染与主体裁剪脚本。",
+      "3MF 的平台名称、对象名称、标题和生成器品牌统一为 Bigchx Make。",
+      "新增技能主页、版本日志、可校验下载包和公开 manifest。",
+      "明确浮雕、完整立体模型、雕刻刀路和 UV 的未完成状态。"
+    ],
+    "moduleVersions": {
+      "core": "2.0.0",
+      "color-analysis": "1.0.0",
+      "separation": "1.0.0",
+      "vector-redraw": "1.0.0",
+      "filament": "1.0.0",
+      "print-export": "2.0.0"
+    },
+    "migration": "旧技能用户请下载完整包，安装到 bigchx-make 目录并改用 $bigchx-make。旧中间状态格式仍为 version 1，可继续用于 recolor/export。旧版没有内置版本检查，需手动迁移一次。"
+  }
+]
