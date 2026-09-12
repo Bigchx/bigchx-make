@@ -1,5 +1,7 @@
 # Bigchx Make
 
+[简体中文](README.zh-CN.md)
+
 Bigchx Make is an agent skill for turning images into clean, printable, multicolor artwork. It combines original-image color analysis, limited-color separation, assistant-guided cartoon vector redraws, official Bambu filament matching, and printer-specific 3MF export.
 
 This repository contains the installable `bigchx-make` skill package. The repository is maintained privately under the `bigchx` GitHub organization while the public website and release channel are managed separately.
