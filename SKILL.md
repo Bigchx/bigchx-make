@@ -52,7 +52,7 @@ node scripts/check-update.mjs --module vector-redraw
 - 普通分色使用原图；用户授权重绘后，将确认的重绘作品作为新的输入，按最终 mm 尺寸重新算物理轮廓。去背景不等于删除所有白色色块。
 - 默认推荐平放。预览、未切片 3MF、实际切片验证分别表述。真实切片通过才能说“已切片验证”，不启动打印、不自动绑定 AMS 槽位。设备支持的自动换料数不等于算法色数。
 - 多色 3MF 在 Bambu Studio **打开为项目**；各颜色是同一对象内对齐的部件。导出的品牌与平台名称为 **Bigchx Make**，保留真实 Bambu 机型和材料预设名。
-- 激光 LAC 使用 `node scripts/laser-lac.mjs`，必须从已验证 Bambu Suite 激光 `.lac` 模板继承机型、材料和工艺；脚本替换图片和预览并删除模板 G-code。输出是未切片项目，必须在 Bambu Suite 中重新切片后再谈 G-code 或加工验证。
+- LAC 使用 `node scripts/laser-lac.mjs`，必须从与所选模式匹配的已验证 Bambu Suite `.lac` 模板继承机型、材料和工艺；脚本替换图片和预览并删除模板 G-code。输出是未切片项目，必须在 Bambu Suite 中重新切片后再谈 G-code 或加工验证。
 - 用户发送图片后，先询问并记录：Bambu 机型、激光或刀切、成品宽度/高度、材料，以及对应的已验证 `.lac` 模板。激光用 `--mode laser`，刀切用 `--mode blade`；不要把刀切模板当激光模板，或反过来。
 
 ## 安装和发布
