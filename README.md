@@ -15,6 +15,21 @@ This repository contains the installable `bigchx-make` skill package. The reposi
 - Export aligned, printer-specific multicolor 3MF/STL/SVG projects for flat prints.
 - Create a continuous rectangular base plate with a raised Logo at explicitly defined Z heights.
 
+## Laser LAC projects
+
+The package can build an editable Bambu Suite laser project from a verified `.lac` template. It inherits the template's machine, material, and `LaserImageEngrave` settings, replaces the image and previews, and removes template G-code so the old image cannot be engraved accidentally.
+
+```sh
+node scripts/laser-lac.mjs \
+  --input logo.png \
+  --template laser-template.lac \
+  --machine "Bambu Lab H2C-10W" \
+  --material "200g Kraft Paper" \
+  --out job/logo-laser.lac
+```
+
+The result is an unsliced LAC project. Open it in Bambu Suite and re-slice before treating the generated G-code as valid for the new image.
+
 ## Quick start
 
 Requirements: Node.js 22.12 or newer (Node 24 LTS recommended) and npm.

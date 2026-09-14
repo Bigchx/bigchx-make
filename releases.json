@@ -1,5 +1,25 @@
 [
   {
+    "version": "2.2.0",
+    "date": "2026-09-14",
+    "title": "激光 LAC 项目生成模式",
+    "changes": [
+      "新增 laser-lac 模式：从已验证 Bambu Suite 激光 LAC 模板继承机型、材料和 LaserImageEngrave 参数，替换图片与预览。",
+      "强制删除模板旧 G-code，明确输出为可继续切片的项目包，不把未验证文件描述为机器 G-code。",
+      "新增激光 LAC 指南、CLI 脚本和模块清单。"
+    ],
+    "moduleVersions": {
+      "core": "2.0.1",
+      "color-analysis": "1.0.0",
+      "separation": "1.0.0",
+      "vector-redraw": "1.0.0",
+      "filament": "1.0.0",
+      "print-export": "2.1.0",
+      "raised-logo": "1.0.0",
+      "laser-lac": "1.0.0"
+    }
+  },
+  {
     "version": "2.1.2",
     "date": "2026-09-09",
     "title": "技能白底品牌图标",

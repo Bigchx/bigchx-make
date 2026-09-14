@@ -15,6 +15,21 @@ Bigchx Make 是一个把图片整理为干净、可打印多色图稿的 Agent S
 - 生成保持图层对齐的平面多色 3MF / STL / SVG 工程。
 - 创建连续矩形底板，并按明确的 Z 高度生成凸起 Logo。
 
+## 激光 LAC 项目
+
+技能包可以根据已验证的 `.lac` 模板生成可编辑的 Bambu Suite 激光项目。它继承模板的机型、材料和 `LaserImageEngrave` 参数，替换图片与预览，并删除模板 G-code，避免误把旧图片加工出去。
+
+```sh
+node scripts/laser-lac.mjs \
+  --input logo.png \
+  --template laser-template.lac \
+  --machine "Bambu Lab H2C-10W" \
+  --material "200g Kraft Paper" \
+  --out job/logo-laser.lac
+```
+
+输出是未切片的 LAC 项目。请在 Bambu Suite 中打开并重新切片，确认新图片对应的 G-code 后再加工。
+
 ## 快速开始
 
 要求：Node.js 22.12 或更高版本（推荐 Node 24 LTS）和 npm。

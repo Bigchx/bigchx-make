@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "name": "bigchx-make",
   "displayName": "Bigchx Make",
-  "version": "2.1.2",
-  "releasedAt": "2026-09-09",
+  "version": "2.2.0",
+  "releasedAt": "2026-09-14",
   "website": "https://skills.bigchx.com/",
   "author": "bigchx",
   "entrypoint": "/skills/SKILL.md",
@@ -223,6 +223,29 @@
           "prompt": "使用 $bigchx-make，给这个 Logo 加白色矩形底板，底板厚 2 mm，Logo 凸起 0.2 mm，保留颜色并切片检查。"
         }
       ]
+    },
+    "laser-lac": {
+      "title": "激光 LAC 项目封装",
+      "version": "1.0.0",
+      "problem": "需要复用 Bambu Suite 的机型、材料和激光工艺参数生成新的 LAC 项目。",
+      "summary": "以已验证激光 LAC 为模板替换图片和预览，删除旧 G-code，输出可在 Bambu Suite 继续切片的项目包。",
+      "guide": "references/laser-lac.md",
+      "prompt": "使用 $bigchx-make，按这个激光 LAC 模板的机型、材料和参数，把图片封装成可在 Bambu Suite 打开的激光 LAC 项目。",
+      "command": "node scripts/laser-lac.mjs --input logo.png --template laser-template.lac --machine \"Bambu Lab H2C-10W\" --material \"200g Kraft Paper\" --out job/logo-laser.lac",
+      "outputs": [
+        "LAC 项目包",
+        "机型/材料/工艺继承信息",
+        "未切片提示"
+      ],
+      "status": "available",
+      "examples": [
+        {
+          "title": "按激光模板生成 LAC",
+          "input": "图片、已验证激光 LAC 模板",
+          "output": "可在 Bambu Suite 打开的未切片 LAC 项目",
+          "prompt": "使用 $bigchx-make，参考这个激光 LAC 的机型、材料和加工参数，把新图片生成同样配置的 LAC，删除旧 G-code 并说明需要重新切片。"
+        }
+      ]
     }
   },
   "roadmap": [
@@ -239,14 +262,14 @@
       "version": null
     },
     {
-      "id": "engraving",
-      "title": "雕刻图形与加工刀路",
+      "id": "uv",
+      "title": "UV 打印与模型纹理",
       "status": "planned",
       "version": null
     },
     {
-      "id": "uv",
-      "title": "UV 打印与模型纹理",
+      "id": "engraving-gcode",
+      "title": "激光直接切片与机器 G-code",
       "status": "planned",
       "version": null
     }
@@ -262,19 +285,22 @@
     "references/updates.md",
     "references/releasing.md",
     "NOTICE.md",
-    "references/raised-logo.md"
+    "references/raised-logo.md",
+    "references/laser-lac.md"
   ],
   "commands": [
     "analyze",
     "separate",
     "recolor",
     "export",
-    "catalog"
+    "catalog",
+    "laser-lac"
   ],
   "auxiliaryCommands": [
     "scripts/render-svg.mjs",
     "scripts/check-update.mjs",
-    "scripts/raised-logo.mjs"
+    "scripts/raised-logo.mjs",
+    "scripts/laser-lac.mjs"
   ],
   "remoteComputeApi": false
 }

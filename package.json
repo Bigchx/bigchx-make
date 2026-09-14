@@ -1,6 +1,6 @@
 {
   "name": "bigchx-make-skill",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "private": true,
   "type": "module",
   "description": "Bigchx Make · 图片分色、漫画矢量重绘、耗材匹配与多色打印",
