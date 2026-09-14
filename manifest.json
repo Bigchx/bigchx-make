@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "name": "bigchx-make",
   "displayName": "Bigchx Make",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "releasedAt": "2026-09-14",
   "website": "https://skills.bigchx.com/",
   "author": "bigchx",
@@ -226,11 +226,11 @@
     },
     "laser-lac": {
       "title": "激光 LAC 项目封装",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "problem": "需要复用 Bambu Suite 的机型、材料和激光工艺参数生成新的 LAC 项目。",
-      "summary": "以已验证激光 LAC 为模板替换图片和预览，删除旧 G-code，输出可在 Bambu Suite 继续切片的项目包。",
+      "summary": "以已验证激光或刀切 LAC 为模板替换图片、预览和尺寸，删除旧 G-code，输出可直接导入 Bambu Suite 的项目包。",
       "guide": "references/laser-lac.md",
-      "prompt": "使用 $bigchx-make，按这个激光 LAC 模板的机型、材料和参数，把图片封装成可在 Bambu Suite 打开的激光 LAC 项目。",
+      "prompt": "使用 $bigchx-make，询问机型、激光或刀切、尺寸和材料，再按对应 LAC 模板把图片封装成可直接导入 Bambu Suite 的项目。",
       "command": "node scripts/laser-lac.mjs --input logo.png --template laser-template.lac --machine \"Bambu Lab H2C-10W\" --material \"200g Kraft Paper\" --out job/logo-laser.lac",
       "outputs": [
         "LAC 项目包",
@@ -243,7 +243,7 @@
           "title": "按激光模板生成 LAC",
           "input": "图片、已验证激光 LAC 模板",
           "output": "可在 Bambu Suite 打开的未切片 LAC 项目",
-          "prompt": "使用 $bigchx-make，参考这个激光 LAC 的机型、材料和加工参数，把新图片生成同样配置的 LAC，删除旧 G-code 并说明需要重新切片。"
+          "prompt": "使用 $bigchx-make，先确认机型、激光或刀切、宽高尺寸和材料，再参考对应 LAC 模板生成新图片项目，删除旧 G-code 并说明重新切片要求。"
         }
       ]
     }

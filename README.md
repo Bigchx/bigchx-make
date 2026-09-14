@@ -14,6 +14,7 @@ This repository contains the installable `bigchx-make` skill package. The reposi
 - Recolor layers with official Bambu material and color identities.
 - Export aligned, printer-specific multicolor 3MF/STL/SVG projects for flat prints.
 - Create a continuous rectangular base plate with a raised Logo at explicitly defined Z heights.
+- Generate laser (`LaserImageEngrave`) or blade (`KCPrintThenCut`) LAC projects from matching Bambu Suite templates, with confirmed machine, material, and size.
 
 ## Laser LAC projects
 
@@ -29,6 +30,8 @@ node scripts/laser-lac.mjs \
 ```
 
 The result is an unsliced LAC project. Open it in Bambu Suite and re-slice before treating the generated G-code as valid for the new image.
+
+For blade cutting, pass `--mode blade` with a blade template. Use `--width-mm` and `--height-mm` for the finished size; the script validates that the template process matches the selected mode.
 
 ## Quick start
 
@@ -73,7 +76,7 @@ The recommended orientation is flat. A generated 3MF is an unsliced Bambu Studio
 
 ## Version and updates
 
-The current package version is **2.1.2**. Module versions and release notes are in `manifest.json` and `releases.json`. Before a task, an agent can check the published manifest with:
+The current package version is **2.3.0**. Module versions and release notes are in `manifest.json` and `releases.json`. Before a task, an agent can check the published manifest with:
 
 ```sh
 node scripts/check-update.mjs --force

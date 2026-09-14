@@ -14,6 +14,7 @@ Bigchx Make 是一个把图片整理为干净、可打印多色图稿的 Agent S
 - 使用拓竹官方材料和颜色身份重新配色。
 - 生成保持图层对齐的平面多色 3MF / STL / SVG 工程。
 - 创建连续矩形底板，并按明确的 Z 高度生成凸起 Logo。
+- 根据匹配的 Bambu Suite 模板生成激光（`LaserImageEngrave`）或刀切（`KCPrintThenCut`）LAC 项目，并校验机型、材料和尺寸。
 
 ## 激光 LAC 项目
 
@@ -29,6 +30,8 @@ node scripts/laser-lac.mjs \
 ```
 
 输出是未切片的 LAC 项目。请在 Bambu Suite 中打开并重新切片，确认新图片对应的 G-code 后再加工。
+
+刀切时请使用刀切模板并传入 `--mode blade`；激光使用 `--mode laser`。用 `--width-mm` 和 `--height-mm` 指定成品尺寸，脚本会校验模板工艺与模式一致。
 
 ## 快速开始
 
@@ -73,7 +76,7 @@ node scripts/render-svg.mjs --input job/artwork.svg --out job/vector --size 1600
 
 ## 版本与更新
 
-当前技能包版本为 **2.1.2**。模块版本和发布记录见 `manifest.json` 与 `releases.json`。任务开始前可检查公开清单：
+当前技能包版本为 **2.3.0**。模块版本和发布记录见 `manifest.json` 与 `releases.json`。任务开始前可检查公开清单：
 
 ```sh
 node scripts/check-update.mjs --force

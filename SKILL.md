@@ -2,7 +2,7 @@
 name: bigchx-make
 description: "Analyze image colors, separate 2–36 color layers, redraw cartoon outlines and flat-color SVGs, match official Bambu filaments, export printer-specific multicolor 3MF projects, generate laser LAC project packages from Bambu Suite templates, and build raised logos on continuous base plates. Use for image-to-vector, image-to-multicolor-print, image-to-laser-project, clean logo-like redrawing, filament matching, or the Bigchx Make workbench. Relief, complete 3D reconstruction, CAM toolpaths and direct machine G-code generation are not complete modules."
 metadata:
-  version: "2.1.2"
+  version: "2.3.0"
 ---
 
 # Bigchx Make
@@ -38,7 +38,7 @@ node scripts/check-update.mjs --module vector-redraw
 | filament | 1.0.0 | 拓竹官方耗材推荐、图层换色 | [颜色工作流](references/color-workflow.md) |
 | print-export | 2.1.0 | 按尺寸与机型生成多色 3MF | [打印约束](references/printing.md)及[本地命令](references/local-cli.md) |
 | raised-logo | 1.0.0 | 连续底板与凸起 Logo，明确各部件高度 | [凸起 Logo](references/raised-logo.md) |
-| laser-lac | 1.0.0 | 从已验证模板生成可打开的激光 LAC 项目 | [激光 LAC](references/laser-lac.md) |
+| laser-lac | 1.1.0 | 从已验证模板生成可导入的激光或刀切 LAC 项目 | [激光 LAC](references/laser-lac.md) |
 
 仅阅读与当前任务有关的指南。发布时由维护者同步表格与 manifest；脚本比较以 manifest 为准。
 
@@ -53,6 +53,7 @@ node scripts/check-update.mjs --module vector-redraw
 - 默认推荐平放。预览、未切片 3MF、实际切片验证分别表述。真实切片通过才能说“已切片验证”，不启动打印、不自动绑定 AMS 槽位。设备支持的自动换料数不等于算法色数。
 - 多色 3MF 在 Bambu Studio **打开为项目**；各颜色是同一对象内对齐的部件。导出的品牌与平台名称为 **Bigchx Make**，保留真实 Bambu 机型和材料预设名。
 - 激光 LAC 使用 `node scripts/laser-lac.mjs`，必须从已验证 Bambu Suite 激光 `.lac` 模板继承机型、材料和工艺；脚本替换图片和预览并删除模板 G-code。输出是未切片项目，必须在 Bambu Suite 中重新切片后再谈 G-code 或加工验证。
+- 用户发送图片后，先询问并记录：Bambu 机型、激光或刀切、成品宽度/高度、材料，以及对应的已验证 `.lac` 模板。激光用 `--mode laser`，刀切用 `--mode blade`；不要把刀切模板当激光模板，或反过来。
 
 ## 安装和发布
 
