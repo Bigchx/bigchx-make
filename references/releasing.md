@@ -21,10 +21,10 @@ npm run build
 
 ZIP 与 SHA-256 生成在 `release-artifacts/`，不进入 public、dist 或 Docker 镜像。保留版本化 ZIP 用于维护者回退，`release-artifacts/bigchx-make-skill.zip` 是待上传的当前完整包。同一版本不能覆盖成不同内容。源 manifest 不包含包自身的校验值；打包后只在公开 manifest.artifact 写入实际 SHA-256 和字节数。
 
-## OSS 上传与网站部署
+## GitHub 发布与网站部署
 
-技能包统一地址：<https://oss.3dp.ing/skills/bigchx-make-skill.zip>。manifest.download、artifact.url、安装指南和更新提醒均使用此固定地址。主页不提供下载按钮或下载区，网站不托管技能 ZIP，旧下载路径返回 404。
+技能包统一地址：<https://github.com/Bigchx/bigchx-make/archive/refs/heads/main.zip>。manifest.download、artifact.url、安装指南和更新提醒均使用此固定地址。主页不提供下载按钮或下载区，网站不托管技能 ZIP，旧下载路径返回 404。
 
-维护者确认发布后，将 `release-artifacts/bigchx-make-skill.zip` 上传到上述 OSS 对象，再发布与它匹配的清单和网站。先验证 OSS 文件的 SHA-256 与公开清单一致，避免清单先于包上线。固定地址会随版本更新，应在 OSS 设置合适的缓存或刷新 CDN。
+维护者确认发布后，将 `release-artifacts/bigchx-make-skill.zip` 上传到上述 GitHub 仓库，再发布与它匹配的清单和网站。先验证 GitHub 下载文件的 SHA-256 与公开清单一致，避免清单先于包上线。GitHub 分支压缩包会随 main 更新；需要稳定版本时应改用版本标签压缩包。
 
-网站由 Docker 使用已生成页面与 public 资产构建，不需要技能源或打包产物目录。由外层代理配置 skills.bigchx.com 的 DNS、HTTPS 和容器转发。上线核对 `/`、`/zh/`、`/workbench/`、`/skills/manifest.json` 与 OSS 文件校验值。本地构建成功不代表已上传 OSS 或部署网站。
+网站由 Docker 使用已生成页面与 public 资产构建，不需要技能源或打包产物目录。由外层代理配置 skills.bigchx.com 的 DNS、HTTPS 和容器转发。上线核对 `/`、`/zh/`、`/workbench/`、GitHub raw manifest 与下载文件校验值。本地构建成功不代表已推送 GitHub 或部署网站。

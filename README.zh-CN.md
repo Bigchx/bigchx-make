@@ -64,9 +64,9 @@ node scripts/render-svg.mjs --input job/artwork.svg --out job/vector --size 1600
 
 把完整目录作为 `bigchx-make` 安装到客户端的 skills 目录。不要只复制 `SKILL.md`：本地命令还依赖 `scripts/`、`references/`、`assets/`、官方配置快照和包清单。
 
-维护中的下载地址是：
+维护中的下载地址是 GitHub 仓库压缩包（仓库为私有，下载时需要登录 GitHub）：
 
-<https://oss.3dp.ing/skills/bigchx-make-skill.zip>
+<https://github.com/Bigchx/bigchx-make/archive/refs/heads/main.zip>
 
 <https://skills.bigchx.com/> 提供 Skills 文档和浏览器工作台。网页是静态浏览器应用，图片计算在浏览器中完成，或通过本地 Node.js 技能包执行；没有远程图片计算 API。
 
@@ -76,7 +76,7 @@ node scripts/render-svg.mjs --input job/artwork.svg --out job/vector --size 1600
 
 ## 版本与更新
 
-当前技能包版本为 **2.3.0**。模块版本和发布记录见 `manifest.json` 与 `releases.json`。任务开始前可检查公开清单：
+当前技能包版本为 **2.3.1**。模块版本和发布记录见 `manifest.json` 与 `releases.json`。任务开始前可检查公开清单：
 
 ```sh
 node scripts/check-update.mjs --force

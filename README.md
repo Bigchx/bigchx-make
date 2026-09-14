@@ -64,9 +64,9 @@ The renderer produces an editable source alongside `transparent.png`, a white-ba
 
 Install the complete directory as `bigchx-make` in the client's skills directory. Do not copy only `SKILL.md`: local commands depend on `scripts/`, `references/`, `assets/`, the official configuration snapshot, and the package manifest.
 
-The maintained download address is:
+The maintained download address is the GitHub repository archive (authentication is required while the repository is private):
 
-<https://oss.3dp.ing/skills/bigchx-make-skill.zip>
+<https://github.com/Bigchx/bigchx-make/archive/refs/heads/main.zip>
 
 The website at <https://skills.bigchx.com/> provides the Skills documentation and browser workbench. It is a static browser application: image computation runs in the browser or through this local Node.js package. There is no remote image-computation API.
 
@@ -76,7 +76,7 @@ The recommended orientation is flat. A generated 3MF is an unsliced Bambu Studio
 
 ## Version and updates
 
-The current package version is **2.3.0**. Module versions and release notes are in `manifest.json` and `releases.json`. Before a task, an agent can check the published manifest with:
+The current package version is **2.3.1**. Module versions and release notes are in `manifest.json` and `releases.json`. Before a task, an agent can check the published manifest with:
 
 ```sh
 node scripts/check-update.mjs --force

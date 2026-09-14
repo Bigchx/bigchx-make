@@ -1,5 +1,25 @@
 [
   {
+    "version": "2.3.1",
+    "date": "2026-09-14",
+    "title": "GitHub 下载与版本检查来源",
+    "changes": [
+      "将技能包下载地址和版本清单检查地址切换到 Bigchx/bigchx-make GitHub 仓库。",
+      "私有仓库版本检查支持 GITHUB_TOKEN 或 GH_TOKEN；无凭据时继续离线使用。",
+      "补充 GitHub 安装、发布和双语 README 说明。"
+    ],
+    "moduleVersions": {
+      "core": "2.0.1",
+      "color-analysis": "1.0.0",
+      "separation": "1.0.0",
+      "vector-redraw": "1.0.0",
+      "filament": "1.0.0",
+      "print-export": "2.1.0",
+      "raised-logo": "1.0.0",
+      "laser-lac": "1.1.0"
+    }
+  },
+  {
     "version": "2.3.0",
     "date": "2026-09-14",
     "title": "图片到激光/刀切 LAC 项目生成模式",

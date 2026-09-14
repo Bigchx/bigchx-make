@@ -5,7 +5,7 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const localPath = new URL('../manifest.json', import.meta.url);
-const endpoint = 'https://skills.bigchx.com/skills/manifest.json';
+const endpoint = 'https://raw.githubusercontent.com/Bigchx/bigchx-make/main/manifest.json';
 const day = 24 * 60 * 60 * 1000;
 const semver = /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?$/;
 function parseVersion(value) {
@@ -46,7 +46,7 @@ export function compareManifests(local, remote, moduleIds = []) {
   const packageOrder = compareVersions(b.version, a.version);
   const updates = packageOrder < 0 ? [] : ids.flatMap(id => b.modules[id] && compareVersions(b.modules[id].version, a.modules[id].version) > 0 ? [{ module: id, installed: a.modules[id].version, latest: b.modules[id].version }] : []);
   const packageUpdate = packageOrder > 0;
-  return { status: packageUpdate || updates.length ? 'update-available' : 'up-to-date', installed: a.version, latest: b.version, modules: updates, updateStrategy: 'whole-package', download: 'https://oss.3dp.ing/skills/bigchx-make-skill.zip', changelog: 'https://skills.bigchx.com/#releases' };
+  return { status: packageUpdate || updates.length ? 'update-available' : 'up-to-date', installed: a.version, latest: b.version, modules: updates, updateStrategy: 'whole-package', download: 'https://github.com/Bigchx/bigchx-make/archive/refs/heads/main.zip', changelog: 'https://github.com/Bigchx/bigchx-make/blob/main/releases.json' };
 }
 
 export async function checkUpdates({ moduleIds = [], force = false, localFile = localPath, cacheFile = path.join(os.homedir(), '.cache', 'bigchx-make', 'update.json'), fetchImpl = fetch, now = Date.now() } = {}) {
@@ -63,7 +63,8 @@ export async function checkUpdates({ moduleIds = [], force = false, localFile = 
   }
   if (!remote && !unavailable) {
     try {
-      const response = await fetchImpl(endpoint, { signal: AbortSignal.timeout(2500), redirect: 'error', headers: { Accept: 'application/json' } });
+      const token = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
+      const response = await fetchImpl(endpoint, { signal: AbortSignal.timeout(2500), redirect: 'error', headers: { Accept: 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) } });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const reader = response.body.getReader();
       let size = 0, chunks = [];

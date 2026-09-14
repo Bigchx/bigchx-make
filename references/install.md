@@ -1,6 +1,6 @@
 # 安装 Bigchx Make
 
-主页：<https://skills.bigchx.com/>。下载完整 [技能 ZIP](https://oss.3dp.ing/skills/bigchx-make-skill.zip)，解压得到 `bigchx-make/`。仅下载 SKILL.md 无法运行算法。
+主页：<https://skills.bigchx.com/>。从 [GitHub 仓库](https://github.com/Bigchx/bigchx-make) 下载完整 [技能 ZIP](https://github.com/Bigchx/bigchx-make/archive/refs/heads/main.zip)，解压后将 `bigchx-make-main/` 重命名为 `bigchx-make/`。私有仓库需要先登录 GitHub；仅下载 SKILL.md 无法运行算法。
 
 1. 放入客户端支持的技能目录。Codex 常见个人目录为 `~/.codex/skills/bigchx-make/`，Windows 为 `%USERPROFILE%\.codex\skills\bigchx-make\`；Claude Code 常见目录为 `~/.claude/skills/bigchx-make/`。自定义目录以客户端实际配置为准。
 2. 安装 Node.js 22.12+（推荐 24），在技能目录运行：

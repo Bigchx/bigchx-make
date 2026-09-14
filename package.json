@@ -1,11 +1,15 @@
 {
   "name": "bigchx-make-skill",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "private": true,
   "type": "module",
   "description": "Bigchx Make · 图片分色、漫画矢量重绘、耗材匹配、多色打印与激光/刀切 LAC 项目",
   "author": "bigchx",
   "homepage": "https://skills.bigchx.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bigchx/bigchx-make.git"
+  },
   "engines": {
     "node": ">=22.12.0"
   },
