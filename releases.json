@@ -1,5 +1,25 @@
 [
   {
+    "version": "2.3.2",
+    "date": "2026-10-14",
+    "title": "原创代码 MIT 许可与公开安装说明",
+    "changes": [
+      "为 bigchx 自有代码和文档添加 MIT 许可证，明确第三方数据、依赖与商标不在该授权范围内。",
+      "补充拓竹耗材色卡、打印预设和用户提供工程配置的来源及许可范围说明。",
+      "更新双语 README 的公开仓库安装说明；运行脚本、算法、配置数据和模块版本保持不变。"
+    ],
+    "moduleVersions": {
+      "core": "2.0.1",
+      "color-analysis": "1.0.0",
+      "separation": "1.0.0",
+      "vector-redraw": "1.0.0",
+      "filament": "1.0.0",
+      "print-export": "2.1.0",
+      "raised-logo": "1.0.0",
+      "laser-lac": "1.1.0"
+    }
+  },
+  {
     "version": "2.3.1",
     "date": "2026-09-14",
     "title": "GitHub 下载与版本检查来源",

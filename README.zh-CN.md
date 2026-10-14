@@ -4,7 +4,7 @@
 
 Bigchx Make 是一个把图片整理为干净、可打印多色图稿的 Agent Skill。它整合原图主色分析、有限色分层、助手辅助漫画矢量重绘、拓竹官方耗材匹配，以及按打印机生成 3MF 工程。
 
-本仓库包含可安装的 `bigchx-make` 技能包。仓库暂时由 `bigchx` GitHub 组织私有维护；公开网页和发布下载通道单独管理。
+本仓库是由 `bigchx` GitHub 组织维护的公开 `bigchx-make` 技能包，可直接获取并安装。
 
 ## 当前能力
 
@@ -64,7 +64,7 @@ node scripts/render-svg.mjs --input job/artwork.svg --out job/vector --size 1600
 
 把完整目录作为 `bigchx-make` 安装到客户端的 skills 目录。不要只复制 `SKILL.md`：本地命令还依赖 `scripts/`、`references/`、`assets/`、官方配置快照和包清单。
 
-维护中的下载地址是 GitHub 仓库压缩包（仓库为私有，下载时需要登录 GitHub）：
+通过 GitHub 仓库压缩包获取完整技能：
 
 <https://github.com/Bigchx/bigchx-make/archive/refs/heads/main.zip>
 
@@ -76,7 +76,7 @@ node scripts/render-svg.mjs --input job/artwork.svg --out job/vector --size 1600
 
 ## 版本与更新
 
-当前技能包版本为 **2.3.1**。模块版本和发布记录见 `manifest.json` 与 `releases.json`。任务开始前可检查公开清单：
+当前技能包版本为 **2.3.2**。模块版本和发布记录见 `manifest.json` 与 `releases.json`。任务开始前可检查公开清单：
 
 ```sh
 node scripts/check-update.mjs --force
@@ -93,3 +93,7 @@ node scripts/check-update.mjs --force
 算法主源维护在配套网页项目中；本包的 `scripts/core` 是供 Agent 执行的同步运行副本。发布时请保持模块版本、整包版本、`manifest.json`、`releases.json` 和 `SKILL.md` 元数据一致。不要把用户图片、生成模型、依赖缓存或发布 ZIP 放入本仓库。
 
 作者信息、拓竹配置来源和第三方依赖说明见 `NOTICE.md`。
+
+## 许可证
+
+bigchx 自有代码和文档采用 [MIT 许可证](LICENSE)。第三方数据、依赖和商标不在该授权范围内；适用范围及来源见 [NOTICE.md](NOTICE.md)。

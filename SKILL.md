@@ -2,7 +2,7 @@
 name: bigchx-make
 description: "Analyze image colors, separate 2–36 color layers, redraw cartoon outlines and flat-color SVGs, match official Bambu filaments, export printer-specific multicolor 3MF projects, generate laser LAC project packages from Bambu Suite templates, and build raised logos on continuous base plates. Use for image-to-vector, image-to-multicolor-print, image-to-laser-project, clean logo-like redrawing, filament matching, or the Bigchx Make workbench. Relief, complete 3D reconstruction, CAM toolpaths and direct machine G-code generation are not complete modules."
 metadata:
-  version: "2.3.1"
+  version: "2.3.2"
 ---
 
 # Bigchx Make

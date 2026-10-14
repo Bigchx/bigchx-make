@@ -4,7 +4,7 @@
 
 Bigchx Make is an agent skill for turning images into clean, printable, multicolor artwork. It combines original-image color analysis, limited-color separation, assistant-guided cartoon vector redraws, official Bambu filament matching, and printer-specific 3MF export.
 
-This repository contains the installable `bigchx-make` skill package. The repository is maintained privately under the `bigchx` GitHub organization while the public website and release channel are managed separately.
+This repository contains the public, installable `bigchx-make` skill package, maintained by the `bigchx` GitHub organization.
 
 ## Capabilities
 
@@ -64,7 +64,7 @@ The renderer produces an editable source alongside `transparent.png`, a white-ba
 
 Install the complete directory as `bigchx-make` in the client's skills directory. Do not copy only `SKILL.md`: local commands depend on `scripts/`, `references/`, `assets/`, the official configuration snapshot, and the package manifest.
 
-The maintained download address is the GitHub repository archive (authentication is required while the repository is private):
+Download the complete skill package from the GitHub repository archive:
 
 <https://github.com/Bigchx/bigchx-make/archive/refs/heads/main.zip>
 
@@ -76,7 +76,7 @@ The recommended orientation is flat. A generated 3MF is an unsliced Bambu Studio
 
 ## Version and updates
 
-The current package version is **2.3.1**. Module versions and release notes are in `manifest.json` and `releases.json`. Before a task, an agent can check the published manifest with:
+The current package version is **2.3.2**. Module versions and release notes are in `manifest.json` and `releases.json`. Before a task, an agent can check the published manifest with:
 
 ```sh
 node scripts/check-update.mjs --force
@@ -93,3 +93,7 @@ The mature workflow covers color analysis, separation, vector redraw guidance, f
 The algorithm source is maintained in the companion web project; this package contains the synchronized `scripts/core` runtime used by agents. Keep the module versions, package version, `manifest.json`, `releases.json`, and `SKILL.md` metadata aligned when releasing. Do not place user images, generated models, dependency caches, or release ZIPs in this repository.
 
 See `NOTICE.md` for authorship, Bambu configuration provenance, and third-party dependency notices.
+
+## License
+
+Original bigchx code and documentation are licensed under [MIT](LICENSE). Third-party data, dependencies and trademarks are excluded from that grant; see [NOTICE.md](NOTICE.md) for scope and provenance.
